@@ -52,7 +52,7 @@ async function loadProducts() {
 
     card.innerHTML = `
       <div class="product-image-wrap">
-        <img src="https://via.placeholder.com/900x700?text=${encodeURIComponent(product.name)}" alt="${product.name}">
+        <img src="./Images des articles/default-product.jpg" alt="${product.name}">
         <div class="product-labels">
           <span class="pill">${product.categories?.name || "Sans catégorie"}</span>
           <span class="pill">${stockLabel}</span>
