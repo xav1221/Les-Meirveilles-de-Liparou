@@ -9,6 +9,11 @@ async function loadProducts() {
         id,
         name,
         slug
+      ),
+      product_images (
+        image_url,
+        is_cover,
+        position
       )
     `)
     .eq("is_active", true)
@@ -47,12 +52,16 @@ async function loadProducts() {
         ? "Stock faible"
         : "En stock";
 
+    const coverImage =
+      product.product_images?.find((img) => img.is_cover)?.image_url ||
+      "./Images des articles/default-product.jpg";
+
     const card = document.createElement("article");
     card.className = "product";
 
     card.innerHTML = `
       <div class="product-image-wrap">
-        <img src="./Images des articles/default-product.jpg" alt="${product.name}">
+        <img src="${coverImage}" alt="${product.name}">
         <div class="product-labels">
           <span class="pill">${product.categories?.name || "Sans catégorie"}</span>
           <span class="pill">${stockLabel}</span>
